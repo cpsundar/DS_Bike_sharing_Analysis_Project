@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+    <title>Ridership Prediction All Cities</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-data" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html" style="color:black;">&nbsp&nbsp&nbspBike Sharing</a>
+            </div>
+            <!-- Collect the nav links and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-data">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle dropmenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;">Bike Sharing Programs<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">All Cities</a></li>
+                            <li><a href="nyc.html">NYC: Citibike</a></li>
+                            <li><a href="dc.html">DC: Capital Bikeshare</a></li>
+                            <li><a href="chicago.html">Chicago: Divvy Bikes</a></li>
+                        </ul>
+                    </li>
+                    <!-- insert data file here  -->
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row row-card">
+            <div class="card col-md-9">
+                <h3>Bike Ridership Prediction by Weather Parameters All Cities</h3>
+                <hr>
+                <p style="font-size: 24px;">
+                        Linear regression analysis of bike trip counts vs. weather data:
+                </p>
+                <br>
+
+                <div class="row">
+                    <p style="padding: 10px; font-weight:bold;">Prediction by Weather Data:</p>
+                    <p style="padding: 10px;">
+                        Independent Feature Variables: TAVG| TMAX | TMIN | PRCP | AWND | SNWD
+                        <br>
+                        Dependent Variable: Bike Trip-Count
+                        <br>
+                    </p>
+                    <br>
+                    <div class="col-md-4 col-xs-12">
+                        <p style="text-align: center;">New York City</p>
+                        <p style="text-align: center;">
+                            <img style="padding: 0 15px; float: center;" src="images/ML/scaled_nyc.png" width="100%" height="200px">
+                        </p>
+                        <br>
+                        <p style="text-align: center;">
+                            <img style="padding: 0 15px; float: center;" src="images/ML/residual_nyc.png" width="100%" height="250px">
+                        </p>
+                        <br>
+                        
+                        <p style="font-size:16px;">
+                            Mean Squared Error (MSE) - NYC: 0.23 <br>
+                            R-squared (R2 ) - NYC: 0.78 <br>
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <p style="text-align: center;">Washington DC</p>
+                        <p style="text-align: center;">
+                            <img style="padding: 0 15px; float: center;" src="images/ML/scaled_dc.png" width="100%" height="200px">
+                        </p>
+                        <br>
+                        <p style="text-align: center;">
+                            <img style="padding: 0 15px; float: center;" src="images/ML/residual_dc.png" width="100%" height="250px">
+                        </p>
+                        <br>
+                        
+                        <p style="font-size:16px;">
+                            Mean Squared Error (MSE) - DC: 0.23 <br>
+                            R-squared (R2 ) - DC: 0.76 <br>
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <p style="text-align: center;">Chicago</p>
+                        <p style="text-align: center;">
+                            <img style="padding: 0 15px; float: center;" src="images/ML/scaled_chicago.png" width="100%" height="200px">
+                        </p>
+                        <br>
+                        <p style="text-align: center;">
+                            <img style="padding: 0 15px; float: center;" src="images/ML/residual_chicago.png" width="100%" height="250px">
+                        </p>
+                        <br>
+                        
+                        <p style="font-size:16px;">
+                            Mean Squared Error (MSE) - Chicago: 0.11 <br>
+                            R-squared (R2 ) - Chicago: 0.86 <br>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                        <p style="padding: 10px; font-weight:bold;">Prediction by Weather Data & Hour Range:</p>
+                        <p style="padding: 10px;">
+                            Independent Feature Variables: TAVG| TMAX | TMIN | PRCP | AWND | SNWD | Hour-Range
+                            <br>
+                            Hour_Range: [1am-6am, 7am-9am, 10am-4pm, 5pm-7pm, 8pm_12am]
+                            <br>
+                            Dependent Variable: Bike Trip-Count
+                            <br>
+                        </p>
+                        <br>
+                        <div class="col-md-4 col-xs-12">
+                            <p style="text-align: center;">New York City</p>
+                            <p style="text-align: center;">
+                                <img style="padding: 0 15px; float: center;" src="images/ML/scaled_nyc_hr.png" width="100%" height="200px">
+                            </p>
+                            <br>
+                            <p style="text-align: center;">
+                                <img style="padding: 0 15px; float: center;" src="images/ML/residual_nyc_hr.png" width="100%" height="250px">
+                            </p>
+                            <br>
+                            
+                            <p style="font-size:16px;">
+                                Mean Squared Error (MSE) - NYC: 0.28 <br>
+                                R-squared (R2 ) - NYC: 0.72 <br>
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <p style="text-align: center;">Washington DC</p>
+                            <p style="text-align: center;">
+                                <img style="padding: 0 15px; float: center;" src="images/ML/scaled_dc_hr.png" width="100%" height="200px">
+                            </p>
+                            <br>
+                            <p style="text-align: center;">
+                                <img style="padding: 0 15px; float: center;" src="images/ML/residual_dc_hr.png" width="100%" height="250px">
+                            </p>
+                            <br>
+                            
+                            <p style="font-size:16px;">
+                                Mean Squared Error (MSE) - DC: 0.28 <br>
+                                R-squared (R2 ) - DC: 0.67 <br>
+                            </p>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <p style="text-align: center;">Chicago</p>
+                            <p style="text-align: center;">
+                                <img style="padding: 0 15px; float: center;" src="images/ML/scaled_chicago_hr.png" width="100%" height="200px">
+                            </p>
+                            <br>
+                            <p style="text-align: center;">
+                                <img style="padding: 0 15px; float: center;" src="images/ML/residual_chicago_hr.png" width="100%" height="250px">
+                            </p>
+                            <br>
+                            
+                            <p style="font-size:16px;">
+                                Mean Squared Error (MSE) - Chicago: 0.28 <br>
+                                R-squared (R2 ) - Chicago: 0.66 <br>
+                            </p>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="card col-md-3">
+                <h4>Bike Sharing Data Analysis:</h4>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item li-margin">
+                        <a href="data_all.html">Bike Usage Analysis Overview</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="weather_all.html">Bike Usage and Weather Parameters</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="predict_all.html">Bike Ridership Prediction by Weather Parameters</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="review_all.html">BikeShare Customer Review Analysis</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="map.html">BikeShare Station Maps</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

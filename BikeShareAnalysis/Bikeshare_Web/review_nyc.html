@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+    <title>Review Analysis NYC</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-data" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html" style="color:black;">&nbsp&nbsp&nbspBike Sharing</a>
+            </div>
+            <!-- Collect the nav links and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-data">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle dropmenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;">Bike Sharing Programs<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">All Cities</a></li>
+                            <li><a href="nyc.html">NYC: Citibike</a></li>
+                            <li><a href="dc.html">DC: Capital Bikeshare</a></li>
+                            <li><a href="chicago.html">Chicago: Divvy Bikes</a></li>
+                        </ul>
+                    </li>
+                    <!-- insert data file here  -->
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row row-card">
+            <div class="card col-md-9">
+                <h3>Customer Review Analysis NYC - Citi Bike</h3>
+                <hr>
+                
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead><tr><th>#</th><th title="Field #2">nyc_pos_word</th>
+                    <th title="Field #3">nyc_neg_words</th>
+                    <th title="Field #4">nyc_neu_word</th>
+                    </tr></thead>
+                    <tbody><tr>
+                    <td>1</td>
+                    <td>citi bike</td>
+                    <td><strong>customer service</strong></td>
+                    <td>citi bike</td>
+                    </tr>
+                    <tr>
+                    <td>2</td>
+                    <td>30 minute</td>
+                    <td><strong>30 minute </strong></td>
+                    <td>30 minute</td>
+                    </tr>
+                    <tr>
+                    <td>3</td>
+                    <td><strong>get around</strong></td>
+                    <td>citi bike</td>
+                    <td>central park</td>
+                    </tr>
+                    <tr>
+                    <td>4</td>
+                    <td>central park</td>
+                    <td>credit card</td>
+                    <td>dock bike</td>
+                    </tr>
+                    <tr>
+                    <td>5</td>
+                    <td>way get</td>
+                    <td>24 hour</td>
+                    <td>dock station</td>
+                    </tr>
+                    <tr>
+                    <td>6</td>
+                    <td>new york</td>
+                    <td>rent bike</td>
+                    <td>30 min</td>
+                    </tr>
+                    <tr>
+                    <td>7</td>
+                    <td>dock station</td>
+                    <td>dock station</td>
+                    <td><strong>customer service</strong></td>
+                    </tr>
+                    <tr>
+                    <td>8</td>
+                    <td>great way</td>
+                    <td>dock bike</td>
+                    <td>every 30</td>
+                    </tr>
+                    <tr>
+                    <td>9</td>
+                    <td>bike lane</td>
+                    <td>every 30</td>
+                    <td><strong>credit card</strong></td>
+                    </tr>
+                    <tr>
+                    <td>10</td>
+                    <td>day pas</td>
+                    <td>use bike</td>
+                    <td>take bike</td>
+                    </tr>
+                    <tr>
+                    <td>11</td>
+                    <td>around city</td>
+                    <td>get bike</td>
+                    <td>24 hour</td>
+                    </tr>
+                    <tr>
+                    <td>12</td>
+                    <td>dock bike</td>
+                    <td>return bike</td>
+                    <td>bike lane</td>
+                    </tr>
+                    <tr>
+                    <td>13</td>
+                    <td>way see</td>
+                    <td>day pas</td>
+                    <td>day pas</td>
+                    </tr>
+                    <tr>
+                    <td>14</td>
+                    <td>24 hour</td>
+                    <td>call customer</td>
+                    <td>get bike</td>
+                    </tr>
+                    <tr>
+                    <td>15</td>
+                    <td>every 30</td>
+                    <td>30 min</td>
+                    <td>rent bike</td>
+                    </tr>
+                    <tr>
+                    <td>16</td>
+                    <td>use citibike</td>
+                    <td>central park</td>
+                    <td>half hour</td>
+                    </tr>
+                    <tr>
+                    <td>17</td>
+                    <td>30 min</td>
+                    <td>bike every</td>
+                    <td>15 minute</td>
+                    </tr>
+                    <tr>
+                    <td>18</td>
+                    <td>best way</td>
+                    <td>bike station</td>
+                    <td>get charge</td>
+                    </tr>
+                    <tr>
+                    <td>19</td>
+                    <td>around nyc</td>
+                    <td>get charge</td>
+                    <td>bike ride</td>
+                    </tr>
+                    <tr>
+                    <td>20</td>
+                    <td>brooklyn bridge</td>
+                    <td>new york</td>
+                    <td>return bike</td>
+                    </tr>
+                    <tr>
+                    <td>21</td>
+                    <td>make sure</td>
+                    <td>bike share</td>
+                    <td>annual membership</td>
+                    </tr>
+                    <tr>
+                    <td>22</td>
+                    <td>rent bike</td>
+                    <td>take bike</td>
+                    <td>find station</td>
+                    </tr>
+                    <tr>
+                    <td>23</td>
+                    <td>easy use</td>
+                    <td>first time</td>
+                    <td>bike every</td>
+                    </tr>
+                    <tr>
+                    <td>24</td>
+                    <td>return bike</td>
+                    <td>bike rental</td>
+                    <td>bike great</td>
+                    </tr>
+                    <tr>
+                    <td>25</td>
+                    <td>use bike</td>
+                    <td>great idea</td>
+                    <td>new york</td>
+                    </tr>
+                    <tr >
+                            <td nowrap colspan="3"> <h4> NYC Single word Positive & Negative reviews using "wordcloud library"</h4></td>
+                    </tr>
+
+                    </tbody></table>
+
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <p style="text-align: center;">
+                                <img style="padding: 0 15px; float: center;" src="images/nycPositiveReviews.png" width="100%" height="200px">
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <p style="text-align: center;">
+                                <img style="padding: 0 15px; float: center;" src="images/nycNegativeReviews.png" width="100%" height="200px">
+                            </p>
+                        </div>
+                    </div>
+
+
+                
+            </div>
+            <div class="card col-md-3">
+                <h4>Bike Sharing Data Analysis:</h4>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item li-margin">
+                        <a href="data_nyc.html">Bike Usage Analysis Overview</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="weather_nyc.html">Bike Usage and Weather Parameters</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="predict_nyc.html">Bike Ridership Prediction by Weather Parameters</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="review_nyc.html">BikeShare Customer Review Analysis</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="map.html">BikeShare Station Maps</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

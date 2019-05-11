@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikeShare Map</title>
+
+    <!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+
+    <!-- Leaflet JS & CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+    integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+    crossorigin=""></script>
+
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style_map.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/leaflet.groupedlayercontrol.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-data" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html" style="color:black;">&nbsp&nbsp&nbspBike Sharing</a>
+            </div>
+            <!-- Collect the nav links and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-data">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle dropmenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;">Bike Sharing Programs<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">All Cities</a></li>
+                            <li><a href="nyc.html">NYC: Citibike</a></li>
+                            <li><a href="dc.html">DC: Capital Bikeshare</a></li>
+                            <li><a href="chicago.html">Chicago: Divvy Bikes</a></li>
+                        </ul>
+                    </li>
+                    <!-- insert data file here  -->
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+  
+
+    <!-- map div -->
+    <div id="map"></div>
+    <!-- API key -->
+    <script type="text/javascript" src="assets/js/config.js"></script>
+    <!-- JS  -->
+    <script type="text/javascript" src="assets/js/map-nyc.js"></script>
+    <script type="text/javascript" src="assets/js/leaflet.groupedlayercontrol.js"></script>
+
+    
+  </body>
+</html>

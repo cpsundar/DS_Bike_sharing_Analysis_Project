@@ -1,0 +1,95 @@
+body {
+    background-color: white;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+.row-card {
+  margin: 10px 30px 10px 30px;
+}
+
+@media (min-width: 768px){
+  .navbar-expand-custom .navbar-collapse {
+      display: flex!important;
+  }
+  .navbar-expand-custom .navbar-toggler {
+      display: none;
+  }
+}
+
+h1 {
+  color: black;
+  text-align: center;
+}
+
+p {
+  font-family: palatino;
+  font-size: 20px;
+  font-weight: normal;
+  color: black;
+}
+
+h3 {
+  color: black;
+  text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+h4 {
+    color: black;
+    text-align: center;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+.navbar-header {
+  background-color: rgb(120, 151, 214);
+}
+
+.navbar-brand
+{
+  font-weight: bold;
+}
+
+.card {
+  padding: 16px;
+  background-color: rgb(210, 221, 234);
+  border-style: solid;
+  border-color: white;
+  border-width: 10px;
+}
+
+.li-margin {
+  margin: 10px;
+  font-weight: bold;
+ 
+}
+
+.dropmenu {
+  font-weight: bold;
+  font-size: 16px;
+  color:black;
+}
+
+.prg1 {
+  font-family: sans-serif;
+}
+
+.dropdown-menu {
+  width: 215px;
+}
+
+p {
+  font-family: sans-serif;
+}

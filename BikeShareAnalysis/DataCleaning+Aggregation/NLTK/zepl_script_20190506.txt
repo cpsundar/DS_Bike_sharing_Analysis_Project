@@ -1,0 +1,221 @@
+%python
+from pyspark.sql import SparkSession
+import nltk
+nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+from nltk.corpus import wordnet
+from nltk import ngrams
+from nltk.tokenize import RegexpTokenizer
+
+%python
+spark = SparkSession.builder.appName('nlk_bike_review').getOrCreate()
+
+%python
+# Load in data
+# Load in data
+from pyspark import SparkFiles
+url ="http://zdata/Merge_table_full.csv"
+spark.sparkContext.addFile(url)
+df = spark.read.csv(SparkFiles.get("Merge_table_full.csv"), sep=",", header=True)
+#df.show(10)
+df_pd = df.toPandas()
+
+
+
+df_nyc_pos = df_pd.loc[(df_pd["City"]=="NYC") & (df_pd["Class"]=="Positive")]
+df_nyc_pos["cl_Review_text"] = df_nyc_pos["Review_Text"]
+df_nyc_pos["bigram_Review_text"] = df_nyc_pos["Review_Text"]
+
+df_nyc_neg = df_pd.loc[(df_pd["City"]=="NYC") & (df_pd["Class"]=="Negative")]
+df_nyc_neg["cl_Review_text"] = df_nyc_neg["Review_Text"]
+df_nyc_neg["bigram_Review_text"] = df_nyc_neg["Review_Text"]
+
+df_nyc_neu = df_pd.loc[(df_pd["City"]=="NYC") & (df_pd["Class"]=="Neutral")]
+df_nyc_neu["cl_Review_text"] = df_nyc_neu["Review_Text"]
+df_nyc_neu["bigram_Review_text"] = df_nyc_neu["Review_Text"]
+
+df_chicago_pos = df_pd.loc[(df_pd["City"]=="Chicago") & (df_pd["Class"]=="Positive")]
+df_chicago_pos["cl_Review_text"] = df_chicago_pos["Review_Text"]
+df_chicago_pos["bigram_Review_text"] = df_chicago_pos["Review_Text"]
+
+df_chicago_neg = df_pd.loc[(df_pd["City"]=="Chicago") & (df_pd["Class"]=="Negative")]
+df_chicago_neg["cl_Review_text"] = df_chicago_neg["Review_Text"]
+df_chicago_neg["bigram_Review_text"] = df_chicago_neg["Review_Text"]
+
+df_chicago_neu = df_pd.loc[(df_pd["City"]=="Chicago") & (df_pd["Class"]=="Neutral")]
+df_chicago_neu["cl_Review_text"] = df_chicago_neu["Review_Text"]
+df_chicago_neu["bigram_Review_text"] = df_chicago_neu["Review_Text"]
+
+df_dc_pos = df_pd.loc[(df_pd["City"]=="DC") & (df_pd["Class"]=="Positive")]
+df_dc_pos["cl_Review_text"] = df_dc_pos["Review_Text"]
+df_dc_pos["bigram_Review_text"] = df_dc_pos["Review_Text"]
+
+df_dc_neg = df_pd.loc[(df_pd["City"]=="DC") & (df_pd["Class"]=="Negative")]
+df_dc_neg["cl_Review_text"] = df_dc_neg["Review_Text"]
+df_dc_neg["bigram_Review_text"] = df_dc_neg["Review_Text"]
+
+df_dc_neu = df_pd.loc[(df_pd["City"]=="DC") & (df_pd["Class"]=="Neutral")]
+df_dc_neu["cl_Review_text"] = df_dc_neu["Review_Text"]
+df_dc_neu["bigram_Review_text"] = df_dc_neu["Review_Text"]
+
+
+def combine_review_text(df):
+    review_words =[]
+    for index, row in df.iterrows():
+        #print(row["Review_Text"])
+        words = row["Review_Text"].split()
+        #print(words)
+        review_words = review_words + words
+    return review_words
+
+def combine_cl_review_text(df):
+    review_words =[]
+    for index, row in df.iterrows():
+        #print(row["Review_Text"])
+        words = row["cl_Review_text"]
+        #print(words)
+        review_words = review_words + words
+    return review_words
+	
+def combine_bigram_review_text(df):
+    review_words =[]
+    for index, row in df.iterrows():
+        #print(row["bigram_Review_text"])
+        words = row["bigram_Review_text"]
+        #print(words)
+        review_words = review_words + words
+    return review_words
+
+def get_wordnet_pos(word):
+    tag = nltk.pos_tag([word])[0][1][0].upper()
+    tag_dict = {"J": wordnet.ADJ,
+                "N": wordnet.NOUN,
+                "V": wordnet.VERB,
+                "R": wordnet.ADV}
+
+    return tag_dict.get(tag, wordnet.NOUN)
+
+def stopwords_lem(word_list_in):
+    words = []
+    for word in word_list_in:
+        words.append(word.lower())
+    
+    
+    sw = nltk.corpus.stopwords.words('english')
+    #print(sw[:8])
+    
+    
+    words_ns = []
+    for word in words:
+        if word not in sw:
+            words_ns.append(word)
+            
+    #print(words_ns[:100])
+    
+    #nltk.download('wordnet')
+    from nltk.stem import WordNetLemmatizer 
+    lem_tokens=[]
+    
+    lemmatizer = WordNetLemmatizer()
+    
+    for word in words_ns:
+        lem_token =lemmatizer.lemmatize(word,  get_wordnet_pos(word))
+        #sno = nltk.stem.SnowballStemmer('english')
+        #lem_token = sno.stem(word)
+        lem_tokens.append(lem_token)
+        #print(lem_tokens[:100])
+    return lem_tokens
+
+def ret_top_common_words(word_tokens, n):
+    nlp_words = nltk.FreqDist(word_tokens)
+    
+    #for w in nlp_words.most_common(n):
+    #    print(f"most common words -- {w}")
+    return nlp_words.most_common(n)
+
+def get_most_common_words(df, n):
+    out_combine_text = combine_cl_review_text(df)
+    #cleaned_out = stopwords_lem(out_combine_text)
+    #tuple_top_words = ret_top_common_words(cleaned_out, n)
+    tuple_top_words = ret_top_common_words(out_combine_text, n)
+    return tuple_top_words
+    
+def get_most_bigram_common_words(df, n):
+    out_combine_text = combine_bigram_review_text(df)
+    #cleaned_out = stopwords_lem(out_combine_text)
+    #tuple_top_words = ret_top_common_words(cleaned_out, n)
+    tuple_top_words = ret_top_common_words(out_combine_text, n)
+    return tuple_top_words
+
+def apply_nltk_on_col(df_in):
+    import string
+    for index, row in df_in.iterrows():
+       
+       tokenizer = RegexpTokenizer(r'\w+')
+       tokens = tokenizer.tokenize(row["Review_Text"].lower())
+       clened_review = " ".join(tokens)
+       cleaned = stopwords_lem(clened_review.split())
+       row["cl_Review_text"]= cleaned
+       
+       cleaned_str = " ".join(cleaned)
+       
+       string_bigrams=[]
+       n=2
+       # df_in.iloc[index, "cl_Review_text"]=stopwords_lem(df_in["Review_text"])
+       #row["cl_Review_text"]=stopwords_lem(row["Review_Text"].split())
+       
+       #string_bigrams.extend( ngrams(row["Review_Text"].split(), n) )
+       string_bigrams.extend( ngrams(cleaned_str.split(), n) )
+       row["bigram_Review_text"]=string_bigrams
+    return df_in
+
+
+apply_nltk_on_col(df_nyc_pos)
+apply_nltk_on_col(df_nyc_neg)
+apply_nltk_on_col(df_nyc_neu)
+
+apply_nltk_on_col(df_chicago_pos)
+apply_nltk_on_col(df_chicago_neg)
+apply_nltk_on_col(df_chicago_neu)
+
+apply_nltk_on_col(df_dc_pos)
+apply_nltk_on_col(df_dc_neg)
+apply_nltk_on_col(df_dc_neu)
+
+output_dic_single_word = {}
+output_dic_single_word['nyc_Positive_top_words']=get_most_common_words(df_nyc_pos, 25)
+output_dic_single_word['nyc_Neutral_top_words']=get_most_common_words(df_nyc_neu, 25)
+output_dic_single_word['nyc_Negative_top_words']=get_most_common_words(df_nyc_neg, 25)
+
+output_dic_single_word['chicago_Positive_top_words']=get_most_common_words(df_chicago_pos, 25)
+output_dic_single_word['chicago_Neutral_top_words']=get_most_common_words(df_chicago_neu, 25)
+output_dic_single_word['chicago_Negative_top_words']=get_most_common_words(df_chicago_neg, 25)
+
+output_dic_single_word['dc_Positive_top_words']=get_most_common_words(df_dc_pos, 25)
+output_dic_single_word['dc_Neutral_top_words']=get_most_common_words(df_dc_neu, 25)
+output_dic_single_word['dc_Negative_top_words']=get_most_common_words(df_dc_neg, 25)
+
+
+output_dic_two_words = {}
+output_dic_two_words['nyc_Positive_top_bigram_words']=get_most_bigram_common_words(df_nyc_pos, 25)
+output_dic_two_words['nyc_Neutral_top_bigram_words']=get_most_bigram_common_words(df_nyc_neu, 25)
+output_dic_two_words['nyc_Negative_top_bigram_words']=get_most_bigram_common_words(df_nyc_neg, 25)
+
+output_dic_two_words['chicago_Positive_top_bigram_words']=get_most_bigram_common_words(df_chicago_pos, 25)
+output_dic_two_words['chicago_Neutral_top_bigram_words']=get_most_bigram_common_words(df_chicago_neu, 25)
+output_dic_two_words['chicago_Negative_top_bigram_words']=get_most_bigram_common_words(df_chicago_neg, 25)
+
+output_dic_two_words['dc_Positive_top_bigram_words']=get_most_bigram_common_words(df_dc_pos, 25)
+output_dic_two_words['dc_Neutral_top_bigram_words']=get_most_bigram_common_words(df_dc_neu, 25)
+output_dic_two_words['dc_Negative_top_bigram_words']=get_most_bigram_common_words(df_dc_neg, 25)
+
+!conda install pymongo -y
+
+import pymongo
+client = pymongo.MongoClient("mongodb://cpsundar:XXXXXX@palanimongodb-shard-00-00-do7an.mongodb.net:27017,palanimongodb-shard-00-01-do7an.mongodb.net:27017,palanimongodb-shard-00-02-do7an.mongodb.net:27017/test?ssl=true&replicaSet=palanimongodb-shard-0&authSource=admin&retryWrites=true&connect=false")
+db = client.project_3_db
+
+db.bike_reviews_single_word.update({}, output_dic_single_word, upsert=True)
+db.bike_reviews_two_words.update({}, output_dic_two_words, upsert=True)
+   	

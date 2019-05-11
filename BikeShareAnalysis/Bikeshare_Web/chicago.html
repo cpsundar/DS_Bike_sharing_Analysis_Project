@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> 
+    <title>Bike Sharing Chicago</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-data" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html" style="color:black;">&nbsp&nbsp&nbspBike Sharing</a>
+            </div>
+            <!-- Collect the nav links and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-data">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle dropmenu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color:black;">Bike Sharing Programs<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">All Cities</a></li>
+                            <li><a href="nyc.html">NYC: Citibike</a></li>
+                            <li><a href="dc.html">DC: Capital Bikeshare</a></li>
+                            <li><a href="chicago.html">Chicago: Divvy Bikes</a></li>
+                        </ul>
+                    </li>
+                    <!-- insert data file here  -->
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row row-card">
+            <div class="card col-md-9">
+                <h3>Bike Sharing Analysis Chicago - Divvy Bikes</h3>
+                <hr>
+                <p style="text-align: center;">
+                        <img style="padding: 0 15px; float: center;" src="images/Divvy.png" width="50%">
+                </p>
+                <br>
+                <p class="prg1">
+                    Like NYC, Chicago has a reliable transit system that most residents use regularly. The program launched in 2013
+                    with 75 stations across the city, and the number of stations grew as bikesharing in Chicago became popular. There was 
+                    data that was scraped from both Yelp and TripAdvisor which allowed for a comprehensive analysis of the Divvy ridership.
+                </p>
+            </div>
+            <div class="card col-md-3">
+                <h4>Bike Sharing Data Analysis:</h4>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item li-margin">
+                        <a href="data_chicago.html">Bike Usage Analysis Overview</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="weather_chicago.html">Bike Usage and Weather Parameters</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="predict_chicago.html">Bike Ridership Prediction by Weather Parameters</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="review_chicago.html">BikeShare Customer Review Analysis</a>
+                    </li>
+                    <li class="list-group-item li-margin">
+                        <a href="map.html">BikeShare Station Maps</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
